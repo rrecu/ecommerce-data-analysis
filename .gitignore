@@ -3,3 +3,10 @@ data/raw/
 
 # python
 .venv/
+__pycache__/
+
+# jupyter
+.ipynb_checkpoints/
+
+# markdown linter
+.rumdl_cache/

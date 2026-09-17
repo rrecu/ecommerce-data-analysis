@@ -1,0 +1,17 @@
+[global]
+exclude = [".git", ".venv", ".rumdl_cache"]
+respect-gitignore = true
+
+disable = ["MD013", "MD033", "MD041"]
+
+[MD003]
+style = "consistent"
+
+[MD004]
+style = "consistent"
+
+[MD049]
+style = "consistent"
+
+[MD050]
+style = "consistent"
