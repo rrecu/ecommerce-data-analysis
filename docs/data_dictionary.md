@@ -22,3 +22,23 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - The five date columns are actually timestamps stored as `str` (`2017-10-02 10:56:33`). Need to convert to datetime before date math
 - `null` in delivery dates mostly means the order never reached that step (see `order_status` column), not random missing data
 - 8 delivered orders have no delivery timestamp, exclude them from delay metrics
+
+## olist_order_items_dataset.csv
+
+**About this table:** One row per item in an order (112650 rows, 98666 distinct orders). An order with several products appears on several rows.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `order_id` | `str` | Order this item belongs to | Joins to orders |
+| `order_item_id` | `int64` | Item position in the order (1 = first) | Max 21 |
+| `product_id` | `str` | Product bought | Joins to products |
+| `seller_id` | `str` | Seller fulfilling the item | Joins to sellers |
+| `shipping_limit_date` | `str` | Deadline for the seller to ship | Timestamp stored as `str` |
+| `price` | `float64` | Item price (BRL) | Min 0.85, median 74.99, max 6735 |
+| `freight_value` | `float64` | Delivery cost (BRL) | Separate from `price` |
+
+**Notes:**
+
+- No `null` in this table
+- 775 orders from the orders table have no rows here, almost all `unavailable` or `canceled` (plus 1 `shipped`, looks wrong)
+- Most orders have 1 item; average is slightly above 1
