@@ -8,17 +8,17 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 
 | Column | Type | Meaning | Notes |
 |---|---|---|---|
-| `order_id` | `text` | Order ID | Primary key |
-| `customer_id` | `text` | Customer ID for this order | Joins to the customers table |
-| `order_status` | `text` | Lifecycle status | `delivered`, `shipped`, `canceled`, `unavailable`, `invoiced`, `processing`, `created`, `approved` |
-| `order_purchase_timestamp` | `text` | When the order was placed | |
-| `order_approved_at` | `text` | Payment approval time | 160 rows are `null` (payment never approved) |
-| `order_delivered_carrier_date` | `text` | Handed to carrier | 1783 rows are `null` - mostly orders that were never shipped |
-| `order_delivered_customer_date` | `text` | Arrived at customer | 2965 rows are `null` - most never arrived, 8 are delivered despite `null` |
-| `order_estimated_delivery_date` | `text` | Promised delivery estimate | No `null` rows |
+| `order_id` | `str` | Order ID | Primary key |
+| `customer_id` | `str` | Customer ID for this order | Joins to the customers table |
+| `order_status` | `str` | Lifecycle status | `delivered`, `shipped`, `canceled`, `unavailable`, `invoiced`, `processing`, `created`, `approved` |
+| `order_purchase_timestamp` | `str` | When the order was placed | |
+| `order_approved_at` | `str` | Payment approval time | 160 rows are `null` (payment never approved) |
+| `order_delivered_carrier_date` | `str` | Handed to carrier | 1783 rows are `null` - mostly orders that were never shipped |
+| `order_delivered_customer_date` | `str` | Arrived at customer | 2965 rows are `null` - most never arrived, 8 are delivered despite `null` |
+| `order_estimated_delivery_date` | `str` | Promised delivery estimate | No `null` rows |
 
 **Notes:**
 
-- The five date columns are actually timestamps stored as text (`2017-10-02 10:56:33`). Need to convert to datetime before date math
+- The five date columns are actually timestamps stored as `str` (`2017-10-02 10:56:33`). Need to convert to datetime before date math
 - `null` in delivery dates mostly means the order never reached that step (see `order_status` column), not random missing data
 - 8 delivered orders have no delivery timestamp, exclude them from delay metrics
