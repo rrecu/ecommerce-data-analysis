@@ -42,3 +42,22 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - No `null` in this table
 - 775 orders from the orders table have no rows here, almost all `unavailable` or `canceled` (plus 1 `shipped`, looks wrong)
 - Most orders have 1 item; average is slightly above 1
+
+## olist_order_payments_dataset.csv
+
+**About this table:** One row per payment for an order (103886 rows). Most orders have one payment, a few have several.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `order_id` | `str` | Order this payment belongs to | Joins to orders |
+| `payment_sequential` | `int64` | Sequence number of this payment within the order | 1 = first payment |
+| `payment_type` | `str` | How the order was paid | `credit_card`, `boleto`, `voucher`, `debit_card`, `not_defined` |
+| `payment_installments` | `int64` | Number of card installments | Only meaningful for credit card |
+| `payment_value` | `float64` | Amount paid (BRL) | |
+
+**Notes:**
+
+- No `null` in this table
+- About 74% of payments are credit card. Boleto (Brazilian bank slip) is second at 19%
+- About 97% of orders use a single payment row
+- 103886 rows vs 99441 orders: some orders have more than one payment
