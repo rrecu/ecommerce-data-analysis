@@ -60,3 +60,25 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - No `null` in this table, but 3 rows have `payment_type` set as `not_defined`
 - About 74% of payments are made using a credit card. Boleto (Brazilian bank slip) is second at 19%
 - 103886 payment rows vs 99441 orders: about 97% of orders have a single payment row, the rest use several
+
+## olist_order_reviews_dataset.csv
+
+**About this table:** One row per review (99224 rows). Most orders have at most one review row, but 547 orders have more than one.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `review_id` | `str` | Review ID | Some IDs appear on two or three orders |
+| `order_id` | `str` | Order being reviewed | Joins to orders - 547 orders have multiple review rows |
+| `review_score` | `int64` | Rating from 1 to 5 | Always filled |
+| `review_comment_title` | `str` | Optional short title | 87656 `null` rows |
+| `review_comment_message` | `str` | Optional comment text | 58247 `null` rows |
+| `review_creation_date` | `str` | When the review was written | Date stored as `str` |
+| `review_answer_timestamp` | `str` | When the store replied | Timestamp stored as `str` |
+
+**Notes:**
+
+- Score distribution: about 58% are 5, 19% are 4, 12% are 1, the rest are 2 and 3
+- Score without any text is common. Title and message are both optional
+- 547 orders have more than one review row with different `review_id`s and scores can differ. Pick one row per order for analysis or aggregate on purpose
+- 768 orders have no review at all
+- 764 review IDs appear twice and 25 appear three times (same score and text, different `order_id`s)
