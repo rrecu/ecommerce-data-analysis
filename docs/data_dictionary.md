@@ -57,7 +57,6 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 
 **Notes:**
 
-- No `null` in this table
-- About 74% of payments are credit card. Boleto (Brazilian bank slip) is second at 19%
-- About 97% of orders use a single payment row
-- 103886 rows vs 99441 orders: some orders have more than one payment
+- No `null` in this table, but 3 rows have `payment_type` set as `not_defined`
+- About 74% of payments are made using a credit card. Boleto (Brazilian bank slip) is second at 19%
+- 103886 payment rows vs 99441 orders: about 97% of orders have a single payment row, the rest use several
