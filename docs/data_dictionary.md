@@ -100,3 +100,27 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - No `null` in this table
 - 96096 distinct people placed 99441 orders, so some customers came back
 - Location is order-level: one person who ordered twice appears with two rows (city/state per order)
+
+## olist_products_dataset.csv
+
+**About this table:** One row per product (32951 rows). Items join to it via `product_id`.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `product_id` | `str` | Product ID | Primary key, joins to items |
+| `product_category_name` | `str` | Category name in Portuguese | 610 `null`, 73 categories; translation table maps to English |
+| `product_name_lenght` | `float64` | Number of characters in the product name | 610 `null` |
+| `product_description_lenght` | `float64` | Number of characters in the description | 610 `null` |
+| `product_photos_qty` | `float64` | Number of product photos | 610 `null` |
+| `product_weight_g` | `float64` | Weight in grams | 2 `null`; min 0, median 700, max 40425 |
+| `product_length_cm` | `float64` | Length in cm | 2 `null` |
+| `product_height_cm` | `float64` | Height in cm | 2 `null` |
+| `product_width_cm` | `float64` | Width in cm | 2 `null` |
+
+**Notes:**
+
+- The same 610 products miss category and all descriptive metadata fields together
+- Number columns are `float64` instead of `int64` because of the `null` values
+- Top categories: bed/bath/table, sports/leisure, furniture/decoration (Portuguese in the CSV)
+- Every product in order items exists in this table (no orphan products in orders)
+- Weights: most under 2 kg, a few very heavy ones pull the average to 2.28 kg
