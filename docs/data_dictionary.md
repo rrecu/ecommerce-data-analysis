@@ -82,3 +82,21 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - 547 orders have more than one review row with different `review_id`s and scores can differ. Pick one row per order for analysis or aggregate on purpose
 - 768 orders have no review at all
 - 764 review IDs appear twice and 25 appear three times (same score and text, different `order_id`s)
+
+## olist_customers_dataset.csv
+
+**About this table:** One row per order's customer record (99441 rows, same as orders). `customer_id` is unique per row, `customer_unique_id` is the same person across orders.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `customer_id` | `str` | Customer ID for this order | Primary key, joins to orders |
+| `customer_unique_id` | `str` | The actual person | Repeats for repeat buyers - 3345 rows share an ID |
+| `customer_zip_code_prefix` | `int64` | First digits of the postcode | Numeric, not a real number |
+| `customer_city` | `str` | City | |
+| `customer_state` | `str` | Brazilian state | Top: SP, RJ, MG |
+
+**Notes:**
+
+- No `null` in this table
+- 96096 distinct people placed 99441 orders, so some customers came back
+- Location is order-level: one person who ordered twice appears with two rows (city/state per order)
