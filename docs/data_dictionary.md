@@ -121,6 +121,7 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 
 - The same 610 products miss category and all descriptive metadata fields together
 - Number columns are `float64` instead of `int64` because of the `null` values
+- `product_name_lenght` and `product_description_lenght` are spelled wrong in the source data (`lenght` vs `length`). Keep the original spelling when querying
 - Top categories: bed/bath/table, sports/leisure, furniture/decoration (Portuguese in the CSV)
 - Every product in order items exists in this table (no orphan products in orders)
 - Weights: most under 2 kg, a few very heavy ones pull the average to 2.28 kg
