@@ -125,3 +125,21 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - Top categories: bed/bath/table, sports/leisure, furniture/decoration (Portuguese in the CSV)
 - Every product in order items exists in this table (no orphan products in orders)
 - Weights: most under 2 kg, a few very heavy ones pull the average to 2.28 kg
+
+## olist_sellers_dataset.csv
+
+**About this table:** One row per seller (3095 rows). Items join to it via `seller_id`.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `seller_id` | `str` | Seller ID | Primary key, joins to items |
+| `seller_zip_code_prefix` | `int64` | First digits of the postcode | |
+| `seller_city` | `str` | City | |
+| `seller_state` | `str` | Brazilian state | Top: SP, PR, MG |
+
+**Notes:**
+
+- No `null` in this table
+- Only 3095 sellers for 99441 orders: a few sellers cover a lot of orders
+- Most sellers are from SP, PR, MG but most customers are in SP, RJ, MG (order differs)
+- Every seller in order items exists in this table (no orphan sellers)
