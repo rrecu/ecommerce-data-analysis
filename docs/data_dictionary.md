@@ -143,3 +143,18 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - Only 3095 sellers for 99441 orders: a few sellers cover a lot of orders
 - Most sellers are from SP, PR, MG but most customers are in SP, RJ, MG (order differs)
 - Every seller in order items exists in this table (no orphan sellers)
+
+## product_category_name_translation.csv
+
+**About this table:** Lookup: Portuguese category name to English (71 rows). Joins to products via `product_category_name`.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `product_category_name` | `str` | Category in Portuguese | Joins to products |
+| `product_category_name_english` | `str` | Category in English | |
+
+**Notes:**
+
+- No `null` in this table
+- Products use 73 categories but this file has 71: `pc_gamer` and `portateis_cozinha_e_preparadores_de_alimentos` have no English name
+- Join on the Portuguese key; show the English name in charts and dashboards
