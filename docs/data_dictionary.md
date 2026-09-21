@@ -158,3 +158,20 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 - No `null` in this table
 - Products use 73 categories but this file has 71: `pc_gamer` and `portateis_cozinha_e_preparadores_de_alimentos` have no English name
 - Join on the Portuguese key; show the English name in charts and dashboards
+
+## olist_geolocation_dataset.csv
+
+**About this table:** Coordinate points for Brazilian postcodes (1000163 rows, 19015 unique zips). One row per point, not per postcode.
+
+| Column | Type | Meaning | Notes |
+|---|---|---|---|
+| `geolocation_zip_code_prefix` | `int64` | Postcode prefix | Repeats: about 53 points per zip |
+| `geolocation_lat` | `float64` | Latitude | |
+| `geolocation_lng` | `float64` | Longitude | |
+| `geolocation_city` | `str` | City | |
+| `geolocation_state` | `str` | State | |
+
+**Notes:**
+
+- No `null` in this table
+- Not used in this analysis (no maps). If needed later: average lat/lng per zip first, then join
