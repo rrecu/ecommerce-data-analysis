@@ -23,3 +23,9 @@ Around 93% of orders (89,443) arrived on time, while approximately 7% (6,381) ar
 Of all valid orders (98,207), only 3% (2,946) are from returning customers. Revenue from these repeat orders is ~368k BRL, about 2.7% of the total (13.49M). Average order value is 125 for repeat orders vs ~138 for first orders, so returning shoppers spend slightly less per order. The data covers only ~2 years, so some customers may have ordered again after it ends: 3% is a floor, not a ceiling.
 
 [Query: 04_repeat_buyers.sql](../sql/analysis/04_repeat_buyers.sql)
+
+## Credit cards carry a bigger share of value than of volume
+
+Around 74% (75,905) of payments use credit card, accounting for approximately 78% (~12.4M) of payment value. Boleto (Brazilian bank slip) mostly matches: ~19% of payment records with ~18% of payment value. The biggest gap is voucher: ~5.5% of payment records but only ~2.2% of payment value. Debit card is the least used method, with around 1.5% of records and 1.4% of value. The largest average payment is ~162 (credit card) while the smallest is ~62 (voucher).
+
+[Query: 05_payment_mix.sql](../sql/analysis/05_payment_mix.sql)
