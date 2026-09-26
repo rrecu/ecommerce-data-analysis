@@ -1,20 +1,22 @@
 # Findings
 
+Revenue below means item prices only (freight excluded). Payment value includes freight.
+
 ## Monthly orders grow 22x in two years
 
-Orders grew from 293 in Oct 2016 to 6421 in Aug 2018 (September has only 2 orders, excluded), revenue from ~44k to ~849k BRL per month. November 2016 had zero orders (data starts spotty). Average order value drifts down slightly over time (~150 to ~132) as volume grows.
+Orders grew from 293 in Oct 2016 to 6421 in Aug 2018 (September 2016 had only 2 orders, so the comparison starts in October), revenue from ~44k to ~849k BRL per month. November 2016 had zero orders (data starts spotty). Average order value drifts down slightly over time (~150 to ~132) as volume grows.
 
 [Query: 01_monthly_orders.sql](../sql/analysis/01_monthly_orders.sql)
 
 ## Orders were generally delivered earlier than estimated
 
-The average delivery gap improved from approximately 41 days early in late 2016 to around 8–12 days early during most of 2018. Estimates got tighter, or delivery slowed - accuracy improved toward the promise. Overall, about 6.8% of delivered orders arrived later than estimated. The monthly rate varies considerably, ranging from 1% to 17% during 2018. The last months show an unusual spike: 2018-09/10 at 100% late, but only 56/3 orders. These final-month results should be interpreted cautiously because they are based on very small samples.
+The average delivery gap improved from approximately 41 days early in late 2016 to around 8–12 days early during most of 2018. Estimates got tighter over time, or delivery slowed down. Either way, deliveries moved closer to the promised date. Overall, about 6.8% of delivered orders arrived later than estimated. The monthly rate varies considerably, ranging from 1% to 17% during 2018. The last two months jump to 100% late, but that is only 56 and 3 orders, too small to judge.
 
 [Query: 02_delivery_sla.sql](../sql/analysis/02_delivery_sla.sql)
 
 ## Late deliveries are rated around 2 points lower on average
 
-Around 93% of orders (89,443) arrived on time, while approximately 7% (6,381) arrived late. The average review score for on-time deliveries was about 4.3/5, compared with 2.3/5 for late deliveries. On-time orders arrived on average about 14 days before the estimated date. However, other factors such as product quality or seller performance may also influence review scores.
+Among delivered orders that have a review (95,824 of 96,470; 646 delivered orders were never reviewed), around 93% (89,443) arrived on time and 7% (6,381) late. The average review score for on-time deliveries was about 4.3/5, compared with 2.3/5 for late deliveries. On-time orders arrived on average about 14 days before the estimated date. Other things affect scores too, like product quality or seller performance.
 
 [Query: 03_review_drivers.sql](../sql/analysis/03_review_drivers.sql)
 

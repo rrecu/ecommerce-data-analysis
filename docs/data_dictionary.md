@@ -2,6 +2,8 @@
 
 Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)). The raw CSV files are too large for GitHub, so download them from Kaggle if you want to run the notebooks yourself.
 
+This dictionary describes the raw CSVs as downloaded. The database built by `src/clean_data.py` follows the same schema with three changes: the two misspelled `lenght` columns are renamed to `*_length`, 0g weights become `null`, and date columns are parsed before loading.
+
 ## olist_orders_dataset.csv
 
 **About this table:** Main table, one row per order (99,441 rows). Most other tables join on `order_id`.
@@ -13,8 +15,8 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 | `order_status` | `str` | Lifecycle status | `delivered`, `shipped`, `canceled`, `unavailable`, `invoiced`, `processing`, `created`, `approved` |
 | `order_purchase_timestamp` | `str` | When the order was placed | |
 | `order_approved_at` | `str` | Payment approval time | 160 rows are `null` (payment never approved) |
-| `order_delivered_carrier_date` | `str` | Handed to carrier | 1783 rows are `null` - mostly orders that were never shipped |
-| `order_delivered_customer_date` | `str` | Arrived at customer | 2965 rows are `null` - most never arrived, 8 are delivered despite `null` |
+| `order_delivered_carrier_date` | `str` | Handed to carrier | 1783 rows are `null`, mostly orders that were never shipped |
+| `order_delivered_customer_date` | `str` | Arrived at customer | 2965 rows are `null`, most never arrived, 8 are delivered despite `null` |
 | `order_estimated_delivery_date` | `str` | Promised delivery estimate | No `null` rows |
 
 **Notes:**
@@ -68,7 +70,7 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 | Column | Type | Meaning | Notes |
 |---|---|---|---|
 | `review_id` | `str` | Review ID | Some IDs appear on two or three orders |
-| `order_id` | `str` | Order being reviewed | Joins to orders - 547 orders have multiple review rows |
+| `order_id` | `str` | Order being reviewed | Joins to orders, 547 orders have multiple review rows |
 | `review_score` | `int64` | Rating from 1 to 5 | Always filled |
 | `review_comment_title` | `str` | Optional short title | 87656 `null` rows |
 | `review_comment_message` | `str` | Optional comment text | 58247 `null` rows |
@@ -90,7 +92,7 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 | Column | Type | Meaning | Notes |
 |---|---|---|---|
 | `customer_id` | `str` | Customer ID for this order | Primary key, joins to orders |
-| `customer_unique_id` | `str` | The actual person | Repeats for repeat buyers - 3345 rows share an ID |
+| `customer_unique_id` | `str` | The actual person | Repeats for repeat buyers, 3345 rows share an ID |
 | `customer_zip_code_prefix` | `int64` | First digits of the postcode | Numeric, not a real number |
 | `customer_city` | `str` | City | |
 | `customer_state` | `str` | Brazilian state | Top: SP, RJ, MG |
@@ -121,7 +123,7 @@ Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/oli
 
 - The same 610 products miss category and all descriptive metadata fields together
 - Number columns are `float64` instead of `int64` because of the `null` values
-- `product_name_lenght` and `product_description_lenght` are spelled wrong in the source data (`lenght` vs `length`). Keep the original spelling when querying
+- `product_name_lenght` and `product_description_lenght` are spelled wrong in the source data (`lenght` vs `length`). Keep the original spelling when querying the raw CSVs; `clean_data.py` renames them to `product_name_length` and `product_description_length` in the database
 - Top categories: bed/bath/table, sports/leisure, furniture/decoration (Portuguese in the CSV)
 - Every product in order items exists in this table (no orphan products in orders)
 - Weights: most under 2 kg, a few very heavy ones pull the average to 2.28 kg
