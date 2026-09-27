@@ -25,7 +25,12 @@ Do late deliveries hurt customer satisfaction, and how is the marketplace changi
 
 ## How to Run
 
-1. Clone the repository.
+1. Clone the repository:
+
+```bash
+git clone https://github.com/rrecu/ecommerce-data-analysis.git
+```
+
 2. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), create a `data/raw/` folder, and put the 9 CSV files there.
 3. Create a virtual environment and install the dependencies:
 
