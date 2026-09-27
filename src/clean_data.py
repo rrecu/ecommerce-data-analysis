@@ -28,6 +28,11 @@ TIMESTAMP_COLUMNS = [
     "order_estimated_delivery_date"
 ]
 
+# Check every CSV exists before touching the old database
+missing = [name for name in TABLES.values() if not (RAW / name).exists()]
+if missing:
+    raise SystemExit(f"Missing files in data/raw/: {', '.join(missing)}")
+
 if DB.exists():
     DB.unlink()
 
