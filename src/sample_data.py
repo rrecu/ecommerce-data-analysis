@@ -15,7 +15,7 @@ SAMPLES = {
     "reviews": 1000,
     "customers": 1000,
     "products": 1000,
-    "sellers": None,
+    "sellers": 1000,
     "category_translation": None,
     "geolocation": 1000,
 }
