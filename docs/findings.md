@@ -16,7 +16,7 @@ The average delivery gap improved from approximately 41 days early in late 2016 
 
 ## Late deliveries are rated around 2 points lower on average
 
-Among delivered orders that have a review (95,824 of 96,470; 646 delivered orders were never reviewed), around 93% (89,443) arrived on time and 7% (6,381) late. The average review score for on-time deliveries was about 4.3/5, compared with 2.3/5 for late deliveries. On-time orders arrived on average about 14 days before the estimated date. Other things affect scores too, like product quality or seller performance.
+Among delivered orders that have a review (95,824 of 96,470; 646 delivered orders were never reviewed), around 93% (89,443) arrived on time and 7% (6,381) late. The average review score for on-time deliveries was about 4.3/5, compared with 2.3/5 for late deliveries. On-time orders arrived on average about 14 days before the estimated date. Most reviews are 5s (58%), so treat this as an observed difference, not proof of cause. Other things affect scores too, like product quality or seller performance.
 
 [Query: 03_review_drivers.sql](../sql/analysis/03_review_drivers.sql)
 

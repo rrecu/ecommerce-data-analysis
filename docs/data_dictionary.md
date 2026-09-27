@@ -1,6 +1,6 @@
 # Data Dictionary
 
-Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)). The raw CSV files are too large for GitHub, so download them from Kaggle if you want to run the notebooks yourself.
+Olist Brazilian E-commerce dataset ([Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)). The raw CSV files are not committed to keep the repository light, so download them from Kaggle if you want to run the notebooks yourself.
 
 This dictionary describes the raw CSVs as downloaded. The database built by `src/clean_data.py` follows the same schema with three changes: the two misspelled `lenght` columns are renamed to `*_length`, 0g weights become `null`, and date columns are parsed before loading.
 
@@ -176,4 +176,4 @@ This dictionary describes the raw CSVs as downloaded. The database built by `src
 **Notes:**
 
 - No `null` in this table
-- Not used in this analysis (no maps). If needed later: average lat/lng per zip first, then join
+- The scripts load it into the database, but no analysis question uses it (no maps). If needed later: average lat/lng per zip first, then join

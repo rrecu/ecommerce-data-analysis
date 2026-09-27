@@ -17,8 +17,8 @@ Do late deliveries hurt customer satisfaction, and how is the marketplace changi
 
 ## Key Findings
 
-- **Monthly orders grew 22x in two years.** Monthly orders increased from 293 in October 2016 to 6,421 in August 2018. Monthly revenue also increased from approximately BRL 44,000 to BRL 849,000, while average order value decreased slightly
-- **Most orders arrived earlier than estimated.** Orders were generally delivered before the estimated date, although the delivery gap became smaller and more consistent over time. Overall, about 6.8% of delivered orders arrived later than estimated. The monthly rate varies considerably, ranging from 1% to 17% during 2018
+- **Monthly orders grew 22x in two years.** By purchase month, orders increased from 293 in October 2016 to 6,421 in August 2018. Monthly revenue also increased from approximately BRL 44,000 to BRL 849,000, while average order value decreased slightly
+- **Most orders arrived earlier than estimated.** Orders were generally delivered before the estimated date, although the delivery gap became smaller and more consistent over time. Overall, about 6.8% of delivered orders arrived later than estimated. By delivery month, the rate varies considerably, ranging from 1% to 17% during 2018
 - **Late deliveries are linked to lower review scores.** On-time orders received an average score of 4.3/5, compared with 2.3/5 for late orders
 - **Only 3% of orders came from returning customers.** Repeat orders represented approximately BRL 368,000 in revenue, or 2.7% of total revenue
 - **Credit cards represented a larger share of payment value than payment volume.** Credit cards accounted for approximately 74% of payment records but 78% of total payment value. Boleto (Brazilian bank slip) represented around 19% of payment records and 18% of payment value, while vouchers represented 5.5% of records but only 2.2% of payment value
@@ -41,7 +41,7 @@ pip install -r requirements.txt
 python src/clean_data.py
 ```
 
-5. Run any analysis query:
+5. Run any analysis query (needs the `sqlite3` command line tool, or use any SQLite client):
 
 ```bash
 sqlite3 olist_clean.db < sql/analysis/01_monthly_orders.sql
@@ -52,7 +52,7 @@ Optional:
 - Preview sample: `python src/sample_data.py` (writes `data/processed/sample/`)
 - Raw tables for the data quality audit notebook: `python src/load_data.py` (writes `olist.db`, needed by `notebooks/10_data_quality.ipynb`)
 - Notebooks: `jupyter lab` and open `notebooks/`
-- Dashboard: `cd metabase && docker compose up -d`, open <http://localhost:3000>, add a SQLite database with file path `/olist.db`. The four cards are saved questions from queries 01, 02, 03 and 05
+- Dashboard: `cd metabase && docker compose up -d`, open <http://localhost:3000>, add a SQLite database with file path `/olist.db`. To rebuild the four cards: create native SQL questions from sql/analysis/01, 02, 03 and 05 and add them to a dashboard (the screenshot shows the result)
 
 ## Project Structure
 
