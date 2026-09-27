@@ -10,7 +10,7 @@ Orders grew from 293 in Oct 2016 to 6,421 in Aug 2018 (September 2016 had only 2
 
 ## Orders were generally delivered earlier than estimated
 
-The average delivery gap improved from approximately 41 days early in late 2016 to around 8–12 days early during most of 2018. Estimates got tighter over time, or delivery slowed down. Either way, deliveries moved closer to the promised date. Overall, about 6.8% of delivered orders arrived later than estimated. The monthly rate varies considerably, ranging from 1% to 17% during 2018. The last two months jump to 100% late, but that is only 56 and 3 orders, too small to judge.
+The average delivery gap improved from approximately 41 days early in late 2016 to around 8 to 12 days early during most of 2018. Estimates got tighter over time, or delivery slowed down. Either way, deliveries moved closer to the promised date. Overall, about 6.8% of delivered orders arrived later than estimated. The monthly rate varies considerably, ranging from 1% to 17% during 2018. The last two months jump to 100% late, but that is only 56 and 3 orders, too small to judge.
 
 [Query: 02_delivery_sla.sql](../sql/analysis/02_delivery_sla.sql)
 
