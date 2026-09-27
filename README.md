@@ -26,7 +26,7 @@ Do late deliveries hurt customer satisfaction, and how is the marketplace changi
 ## How to Run
 
 1. Clone the repository.
-2. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) and put the 9 CSV files into `data/raw/`.
+2. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), create a `data/raw/` folder, and put the 9 CSV files there.
 3. Create a virtual environment and install the dependencies:
 
 ```bash
@@ -50,8 +50,9 @@ sqlite3 olist_clean.db < sql/analysis/01_monthly_orders.sql
 Optional:
 
 - Preview sample: `python src/sample_data.py` (writes `data/processed/sample/`)
+- Raw tables for the data quality audit notebook: `python src/load_data.py` (writes `olist.db`, needed by `notebooks/10_data_quality.ipynb`)
 - Notebooks: `jupyter lab` and open `notebooks/`
-- Dashboard: `cd metabase && docker compose up -d`, open <http://localhost:3000>, add a SQLite database with file path `/olist.db`
+- Dashboard: `cd metabase && docker compose up -d`, open <http://localhost:3000>, add a SQLite database with file path `/olist.db`. The four cards are saved questions from queries 01, 02, 03 and 05
 
 ## Project Structure
 
@@ -59,7 +60,7 @@ Optional:
 dashboard/           dashboard screenshot
 data/
   processed/sample/  small preview of the data (committed)
-  raw/               empty, put the Kaggle CSVs here (not committed)
+  raw/               create it and put the Kaggle CSVs here (not committed)
 docs/                data dictionary and findings
 metabase/            docker compose for the local dashboard
 notebooks/           exploration, data quality audit, charts
