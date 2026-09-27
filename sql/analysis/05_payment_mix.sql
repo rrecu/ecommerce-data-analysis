@@ -10,7 +10,14 @@ WITH payment_summary AS (
   GROUP BY p.payment_type
 )
 SELECT
-  ps.payment_type,
+  CASE ps.payment_type
+    WHEN 'credit_card' THEN 'Credit card'
+    WHEN 'boleto' THEN 'Boleto'
+    WHEN 'voucher' THEN 'Voucher'
+    WHEN 'debit_card' THEN 'Debit card'
+    WHEN 'not_defined' THEN 'Not defined'
+    ELSE ps.payment_type
+  END AS payment_type,
   ps.payment_count,
   ROUND(
     100.0 * ps.payment_count / SUM(ps.payment_count) OVER (),
@@ -26,4 +33,4 @@ SELECT
     2
   ) AS avg_payment
 FROM payment_summary AS ps
-ORDER BY value_pct DESC
+ORDER BY value_pct DESC;

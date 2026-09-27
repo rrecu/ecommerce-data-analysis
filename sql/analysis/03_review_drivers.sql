@@ -12,8 +12,8 @@ order_data AS (
     CASE
       WHEN julianday(date(o.order_delivered_customer_date))
         > julianday(date(o.order_estimated_delivery_date))
-      THEN 'late'
-      ELSE 'on_time'
+      THEN 'Late'
+      ELSE 'On time'
     END AS delivery_status,
     julianday(date(o.order_delivered_customer_date))
       - julianday(date(o.order_estimated_delivery_date)) AS day_difference,
@@ -33,4 +33,4 @@ SELECT
   ROUND(AVG(o.review_score), 1) AS avg_review_score
 FROM order_data AS o
 GROUP BY delivery_status
-ORDER BY delivery_status;
+ORDER BY CASE delivery_status WHEN 'On time' THEN 0 ELSE 1 END;
