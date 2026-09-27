@@ -4,7 +4,7 @@ Revenue below means item prices only (freight excluded). Payment value includes 
 
 ## Monthly orders grow 22x in two years
 
-Orders grew from 293 in Oct 2016 to 6421 in Aug 2018 (September 2016 had only 2 orders, so the comparison starts in October), revenue from ~44k to ~849k BRL per month. November 2016 had zero orders (data starts spotty). Average order value drifts down slightly over time (~150 to ~132) as volume grows.
+Orders grew from 293 in Oct 2016 to 6,421 in Aug 2018 (September 2016 had only 2 orders, so the comparison starts in October), revenue from ~44k to ~849k BRL per month. November 2016 had zero orders (data starts spotty). Average order value drifts down slightly over time (~150 to ~132) as volume grows.
 
 [Query: 01_monthly_orders.sql](../sql/analysis/01_monthly_orders.sql)
 
