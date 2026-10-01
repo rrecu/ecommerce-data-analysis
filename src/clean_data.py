@@ -41,7 +41,6 @@ conn = sqlite3.connect(DB)
 for table, filename in TABLES.items():
     df = pd.read_csv(RAW / filename)
 
-    # Convert TIMESTAMP_COLUMNS from text to real datetime
     for column in TIMESTAMP_COLUMNS:
         if column in df.columns:
             df[column] = pd.to_datetime(
@@ -49,13 +48,11 @@ for table, filename in TABLES.items():
                 errors="coerce"
             )
 
-    # Rename misspelled columns
     df = df.rename(columns={
         "product_name_lenght": "product_name_length",
         "product_description_lenght": "product_description_length"
     })
 
-    # Change products with 0 weight to null
     if "product_weight_g" in df.columns:
         df.loc[df["product_weight_g"] == 0, "product_weight_g"] = None
 

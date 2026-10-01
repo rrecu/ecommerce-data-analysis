@@ -18,8 +18,8 @@ order_data AS (
     julianday(date(o.order_delivered_customer_date))
       - julianday(date(o.order_estimated_delivery_date)) AS day_difference,
     r.review_score
-  FROM orders as o
-  JOIN latest_reviews as r
+  FROM orders AS o
+  JOIN latest_reviews AS r
     ON o.order_id = r.order_id
     AND r.row_num = 1
   WHERE o.order_status = 'delivered'

@@ -12,7 +12,7 @@ WITH classified_orders AS (
       ELSE 'first'
     END AS customer_type
   FROM customers AS c
-  JOIN orders as o
+  JOIN orders AS o
     ON c.customer_id = o.customer_id
   WHERE o.order_status NOT IN ('canceled', 'unavailable')
 ),
